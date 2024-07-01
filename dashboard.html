@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+
+    .dashboard-container {
+      background-color: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="dashboard-container">
+    <h2>Welcome to your Dashboard</h2>
+    <button id="logout-button">Logout</button>
+  </div>
+
+  <!-- Firebase SDK and initialization script -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyAP-4tLC0FCiPus4T0BklTQSO7DDGCaguY",
+      authDomain: "simple-login-and-sign-up-page.firebaseapp.com",
+      projectId: "simple-login-and-sign-up-page",
+      storageBucket: "simple-login-and-sign-up-page.appspot.com",
+      messagingSenderId: "523497563356",
+      appId: "1:523497563356:web:08ddb7fbc5295f636d0019"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    document.getElementById('logout-button').addEventListener('click', function() {
+      firebase.auth().signOut().then(() => {
+        window.location.href = 'index.html';
+      }).catch((error) => {
+        console.error('Sign Out Error', error);
+      });
+    });
+
+    // Redirect to login if not authenticated
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>

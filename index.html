@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login and Sign Up</title>
+  <style>
+    /* Reset some default styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column; /* Added for vertical alignment of forms */
+    }
+
+    form {
+      background-color: #fff;
+      padding: 20px;
+      width: 300px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px; /* Added for spacing between forms */
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="email"],
+    input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 8px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+
+    .error-message {
+      color: #ff0000;
+      margin-bottom: 10px;
+    }
+
+    /* Responsive design */
+    @media screen and (max-width: 400px) {
+      form {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h2>Sign Up</h2>
+  <form id="signup-form">
+    <label for="signup-email">Email:</label><br>
+    <input type="email" id="signup-email" name="email" required><br>
+    <label for="signup-password">Password:</label><br>
+    <input type="password" id="signup-password" name="password" required><br>
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <h2>Login</h2>
+  <form id="login-form">
+    <label for="login-email">Email:</label><br>
+    <input type="email" id="login-email" name="email" required><br>
+    <label for="login-password">Password:</label><br>
+    <input type="password" id="login-password" name="password" required><br>
+    <button type="submit">Login</button>
+  </form>
+
+  <!-- Firebase SDK and initialization script -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-database.js"></script>
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyAP-4tLC0FCiPus4T0BklTQSO7DDGCaguY",
+      authDomain: "simple-login-and-sign-up-page.firebaseapp.com",
+      projectId: "simple-login-and-sign-up-page",
+      storageBucket: "simple-login-and-sign-up-page.appspot.com",
+      messagingSenderId: "523497563356",
+      appId: "1:523497563356:web:08ddb7fbc5295f636d0019"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Separate JavaScript files for signup and login -->
+  <script src="signup.js"></script>
+  <script src="login.js"></script>
+</body>
+</html>
